@@ -3,9 +3,7 @@
 CE CODE EST VOLONTAIREMENT CRADE : Il sert de support pour un TP sur le refactoring
 de code. Dans la vraie vie, utilisez une bibliothèque telle [Apache™ Batik SVG Toolkit](https://xmlgraphics.apache.org/batik/).
 
-## Projet initial
-
-### Compilation et gestion des dépendances avec MAVEN
+## MAVEN
 
 Le projet s'appuie sur MAVEN pour gérer les dépendances. Le fichier [pom.xml](pom.xml) liste
 les différentes dépendances :
