@@ -9,9 +9,9 @@
 
 Bug : Le programme plante lamentablement quand il rencontre une balise inconnue.
 
-- [ ] Ajouter un test fonctionnel sur [src/test/resources/svg/shapes.svg](src/test/resources/svg/shapes.svg)
+- [x] Ajouter un test fonctionnel sur [src/test/resources/svg/shapes.svg](src/test/resources/svg/shapes.svg)
 
-- [ ] Dans la classe SVGReader, Logger et ignorer les éléments innutiles ou inconnu, respectivement (title, desc) et (line, text, etc.)
+- [x] Dans la classe SVGReader, Logger et ignorer les éléments innutiles ou inconnu, respectivement (title, desc) et (line, text, etc.)
 
 ---
 
