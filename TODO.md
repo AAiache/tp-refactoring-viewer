@@ -44,19 +44,19 @@ class SVGElementReaderRegistry {
 
 ## 0.4 - Gestion des styles
 
-- [ ] Mettre en place une classe "Style"
+- [x] Mettre en place une classe "Style"
 
 Pour simplifier, on s'inspirera de [OpenLayers 2](http://docs.openlayers.org/library/feature_styling.html#style-properties)
 avec deux attributs fillColor et strokeColor (java.awt.Color).
 
-- [ ] Ajouter un attribut style de type Style aux Shape
+- [x] Ajouter un attribut style de type Style aux Shape
 
 On ajoutera une classe AbstractShape pour éviter de répéter les codes
 sur les différentes classes concrètes.
 
-* Mettre à jour SVGReader pour parser les styles
+- [x] Mettre à jour SVGReader pour parser les styles
 
-* Mettre à jour les méthodes de rendu des Shape
+- [x] Mettre à jour les méthodes de rendu des Shape
 
 
 ---

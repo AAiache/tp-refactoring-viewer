@@ -31,12 +31,18 @@ public class SVGElementReaderRegistry {
 	}
 	
 	/**
-	 * Ajout d'un lecteur
+	 * Ajout d'un lecteur.
+	 * 
+	 * Remarque : on enrichit chaque lecteur pour lire les styles 
+	 * 
 	 * @param elementName
 	 * @param reader
 	 */
 	protected void addReader(SVGElementReader reader){
-		this.readers.put(reader.getElementName(), reader) ;
+		SVGElementReader readWithStyle = new SVGElementReaderWithStyle(
+			reader
+		);
+		this.readers.put(reader.getElementName(), readWithStyle) ;
 	}
 	
 	/**

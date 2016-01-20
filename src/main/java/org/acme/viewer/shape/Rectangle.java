@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  * @author MBorne
  *
  */
-public class Rectangle implements Shape {
+public class Rectangle extends AbstractShape {
 	
 	private double x ;
 	private double y ;
@@ -83,6 +83,11 @@ public class Rectangle implements Shape {
 	
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		
+		g2d.setColor(getStyle().getFillColor());
+		g2d.fillRect((int)x, (int)y, (int)width, (int)height);
+		
+		g2d.setColor(getStyle().getStrokeColor());
 		g2d.drawRect((int)x, (int)y, (int)width, (int)height);
 	}
 }
