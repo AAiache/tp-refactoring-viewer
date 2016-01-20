@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.acme.viewer.shape.Circle;
+import org.acme.viewer.shape.Line;
 import org.acme.viewer.shape.Rectangle;
 import org.acme.viewer.shape.Shape;
 
@@ -63,7 +64,7 @@ public class SVGReaderFunctionalTest extends TestCase
 	public void testShapesFile(){
 		SVGReader reader = new SVGReader();
 		List<Shape> shapes = reader.readSVG(shapesFile);
-		assertEquals(2,shapes.size());
+		assertEquals(3,shapes.size());
 		
 		//<rect width="100" height="80" x="0" y="70" fill="green" />
 		{
@@ -77,11 +78,19 @@ public class SVGReaderFunctionalTest extends TestCase
 		}
 		
 		//<line x1="5" y1="5" x2="250" y2="95" stroke="red" />
-		// skipped... TODO
+		{
+			Shape shape = shapes.get(1);
+			assertTrue(shape instanceof Line);
+			Line line = (Line)shape;
+			assertEquals(5.0,line.getX1());
+			assertEquals(5.0,line.getY1());
+			assertEquals(250.0,line.getX2());
+			assertEquals(95.0,line.getY2());
+		}
 	 	
 		//<circle cx="90" cy="80" r="50" fill="blue" />
 		{
-			Shape shape = shapes.get(1);
+			Shape shape = shapes.get(2);
 			assertTrue(shape instanceof Circle);
 			Circle circle = (Circle)shape;
 			assertEquals(90.0,circle.getCenterX());

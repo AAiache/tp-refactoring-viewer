@@ -43,10 +43,9 @@ public class SVGElementReaderRegistry {
 	 * Chargement des readers
 	 */
 	protected void registerReaders() {
-		addReader(new SVGCircleReader() );
-		addReader(new SVGRectReader() );
+		addReader( new SVGCircleReader() );
+		addReader( new SVGRectReader() );
+		addReader( new SVGLineReader() );
 	}
-
-	
 	
 }
