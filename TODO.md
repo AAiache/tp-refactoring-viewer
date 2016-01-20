@@ -17,9 +17,9 @@ Bug : Le programme plante lamentablement quand il rencontre une balise inconnue.
 
 ## 0.3 - Ajout d'une Shape "Line"
 
-- [ ] Créer la classe Line en vous inspirant de la modélisation SVG
+- [x] Créer la classe Line en vous inspirant de la modélisation SVG
 
-- [ ] Remplacer le switch dans SVGReader.parseShapeElement par l'appel à une stratégie de lecture
+- [x] Remplacer le switch dans SVGReader.parseShapeElement par l'appel à une stratégie de lecture
 
 ```
 interface SVGElementReader {
@@ -27,14 +27,14 @@ interface SVGElementReader {
 }
 ```
 
-Remarque : Faire appel à une SVGElementReaderRegistry pour récupérer 
+Remarque : Faire appel à une SVGElementReaderRegistry pour récupérer
 le SVGElementReader correspondant au type adéquat.
 
 ```
-class SVGElementReaderFactory {
+class SVGElementReaderRegistry {
     private Map<String, SVGElementReader> readers = new HashMap<String,SVGElementReader>();
-     
-    public SVGElementReaderRegistry getReader(String type){
+
+    public SVGElementReader getReader(String type){
         //...
     }
 }
@@ -44,14 +44,14 @@ class SVGElementReaderFactory {
 
 ## 0.4 - Gestion des styles
 
-- [ ] Mettre en place une classe "Style" 
+- [ ] Mettre en place une classe "Style"
 
-Pour simplifier, on s'inspirera de [OpenLayers 2](http://docs.openlayers.org/library/feature_styling.html#style-properties) 
+Pour simplifier, on s'inspirera de [OpenLayers 2](http://docs.openlayers.org/library/feature_styling.html#style-properties)
 avec deux attributs fillColor et strokeColor (java.awt.Color).
 
 - [ ] Ajouter un attribut style de type Style aux Shape
 
-On ajoutera une classe AbstractShape pour éviter de répéter les codes 
+On ajoutera une classe AbstractShape pour éviter de répéter les codes
 sur les différentes classes concrètes.
 
 * Mettre à jour SVGReader pour parser les styles
@@ -141,7 +141,7 @@ g2d.setTransform(transform);
 // draw shapes
 ```
 
---- 
+---
 
 Si on vient à s'ennuyer, on pourra :
 
@@ -150,6 +150,3 @@ Si on vient à s'ennuyer, on pourra :
 * Ajouter des contrôles de dessin (création d'une Line, d'un Circle, d'un Rectangle)
 * Ajouter un mécanisme d'annulation sur les contrôles de dessin
 ...
-
-
-
