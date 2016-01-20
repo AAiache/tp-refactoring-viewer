@@ -62,7 +62,10 @@ public class SVGReader {
 		
 		Element rootElement = document.getRootElement();
 		for ( Element shapeElement : rootElement.getChildren() ){
-			result.add(parseShapeElement(shapeElement));
+			Shape shape = parseShapeElement(shapeElement) ;
+			if ( null != shape ){
+				result.add(shape);				
+			}
 		}
 
 		return result;
@@ -80,7 +83,8 @@ public class SVGReader {
 		}else if ( shapeType.equals("rect") ){
 			return parseRectElement(shapeElement);
 		}else{
-			throw new RuntimeException("unsupported type : "+shapeType);
+			logger.info("Unsupported type : {} (skipping)",shapeType);
+			return null ;
 		}
 	}
 
