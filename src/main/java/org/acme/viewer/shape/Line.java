@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  * @author MBorne
  *
  */
-public class Line implements Shape {
+public class Line extends AbstractShape {
 	
 	private double x1 ;
 	private double y1 ;

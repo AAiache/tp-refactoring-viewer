@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  * @author MBorne
  *
  */
-public class Circle implements Shape {
+public class Circle extends AbstractShape {
 	
 	/**
 	 * Centre du cercle

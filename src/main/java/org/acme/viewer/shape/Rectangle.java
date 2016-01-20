@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  * @author MBorne
  *
  */
-public class Rectangle implements Shape {
+public class Rectangle extends AbstractShape {
 	
 	private double x ;
 	private double y ;
