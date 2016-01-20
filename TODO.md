@@ -17,9 +17,9 @@ Bug : Le programme plante lamentablement quand il rencontre une balise inconnue.
 
 ## 0.3 - Ajout d'une Shape "Line"
 
-- [ ] Créer la classe Line en vous inspirant de la modélisation SVG
+- [x] Créer la classe Line en vous inspirant de la modélisation SVG
 
-- [ ] Remplacer le switch dans SVGReader.parseShapeElement par l'appel à une stratégie de lecture
+- [x] Remplacer le switch dans SVGReader.parseShapeElement par l'appel à une stratégie de lecture
 
 ```
 interface SVGElementReader {
