@@ -10,6 +10,11 @@ import java.awt.Color;
  *
  */
 public class Style {
+
+	static public final Color DEFAULT_FILL_COLOR = Color.WHITE ;
+	
+	static public final Color DEFAULT_STROKE_COLOR = Color.BLACK ;
+	
 	/**
 	 * Couleur du contour
 	 */
