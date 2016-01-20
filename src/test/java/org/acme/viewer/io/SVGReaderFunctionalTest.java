@@ -18,11 +18,15 @@ public class SVGReaderFunctionalTest extends TestCase
 {
 	
     private File circleRectFile ;
+    private File shapesFile ;
     
 	@Override
 	protected void setUp() throws Exception {
 		this.circleRectFile = new File(
 			getClass().getResource("/svg/circle-rect.svg").toURI()
+		);
+		this.shapesFile = new File(
+			getClass().getResource("/svg/shapes.svg").toURI()
 		);
 	}
 	
@@ -32,6 +36,7 @@ public class SVGReaderFunctionalTest extends TestCase
 		List<Shape> shapes = reader.readSVG(circleRectFile);
 		assertEquals(2,shapes.size());
 		
+		//<circle cx="20" cy="30" r="10" stroke="black" stroke-width="3" fill="red" />		
 		{
 			Shape shape = shapes.get(0);
 			assertTrue(shape instanceof Circle);
@@ -41,6 +46,7 @@ public class SVGReaderFunctionalTest extends TestCase
 			assertEquals(10.0,circle.getRadius());
 		}
 		
+		//<rect x="40" y="30" width="50" height="60" />
 		{
 			Shape shape = shapes.get(1);
 			assertTrue(shape instanceof Rectangle);
@@ -50,6 +56,41 @@ public class SVGReaderFunctionalTest extends TestCase
 			assertEquals(50.0,circle.getWidth());
 			assertEquals(60.0,circle.getHeight());
 		}
+	}
+	
+
+	@Test
+	public void testShapesFile(){
+		SVGReader reader = new SVGReader();
+		List<Shape> shapes = reader.readSVG(shapesFile);
+		assertEquals(2,shapes.size());
+		
+		//<rect width="100" height="80" x="0" y="70" fill="green" />
+		{
+			Shape shape = shapes.get(0);
+			assertTrue(shape instanceof Rectangle);
+			Rectangle rectangle = (Rectangle)shape;
+			assertEquals(0.0,rectangle.getX());
+			assertEquals(70.0,rectangle.getY());
+			assertEquals(100.0,rectangle.getWidth());
+			assertEquals(80.0,rectangle.getHeight());
+		}
+		
+		//<line x1="5" y1="5" x2="250" y2="95" stroke="red" />
+		// skipped... TODO
+	 	
+		//<circle cx="90" cy="80" r="50" fill="blue" />
+		{
+			Shape shape = shapes.get(1);
+			assertTrue(shape instanceof Circle);
+			Circle circle = (Circle)shape;
+			assertEquals(90.0,circle.getCenterX());
+			assertEquals(80.0,circle.getCenterY());
+			assertEquals(50.0,circle.getRadius());
+		}
+		
+		//<text x="180" y="60">Un texte</text>
+		//skipped... On ne traite pas les textes.
 	}
 	
 }
