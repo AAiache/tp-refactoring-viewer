@@ -65,6 +65,8 @@ public class Line extends AbstractShape {
 
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		
+		g2d.setColor(getStyle().getStrokeColor());
 		g2d.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 	}
 

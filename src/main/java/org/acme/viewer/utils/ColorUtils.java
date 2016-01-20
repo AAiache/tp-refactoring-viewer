@@ -57,7 +57,7 @@ public class ColorUtils {
 			return (Color)field.get(null);
 		} catch (Exception e) {
 			return null ;
-		} 
+		}
 	}
 	
 }

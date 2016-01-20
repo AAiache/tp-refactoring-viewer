@@ -1,5 +1,6 @@
 package org.acme.viewer.shape;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -82,6 +83,11 @@ public class Circle extends AbstractShape {
 
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		
+		g2d.setColor(getStyle().getFillColor());
+		g2d.fillOval((int)centerX, (int)centerY, (int)radius, (int)radius);
+		
+		g2d.setColor(getStyle().getStrokeColor());
 		g2d.drawOval((int)centerX, (int)centerY, (int)radius, (int)radius);
 	}
 }
