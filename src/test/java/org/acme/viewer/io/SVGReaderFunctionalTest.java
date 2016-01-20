@@ -36,6 +36,7 @@ public class SVGReaderFunctionalTest extends TestCase
 		List<Shape> shapes = reader.readSVG(circleRectFile);
 		assertEquals(2,shapes.size());
 		
+		//<circle cx="20" cy="30" r="10" stroke="black" stroke-width="3" fill="red" />		
 		{
 			Shape shape = shapes.get(0);
 			assertTrue(shape instanceof Circle);
@@ -45,6 +46,7 @@ public class SVGReaderFunctionalTest extends TestCase
 			assertEquals(10.0,circle.getRadius());
 		}
 		
+		//<rect x="40" y="30" width="50" height="60" />
 		{
 			Shape shape = shapes.get(1);
 			assertTrue(shape instanceof Rectangle);
@@ -75,7 +77,7 @@ public class SVGReaderFunctionalTest extends TestCase
 		}
 		
 		//<line x1="5" y1="5" x2="250" y2="95" stroke="red" />
-		// skiped... TODO
+		// skipped... TODO
 	 	
 		//<circle cx="90" cy="80" r="50" fill="blue" />
 		{
@@ -88,7 +90,7 @@ public class SVGReaderFunctionalTest extends TestCase
 		}
 		
 		//<text x="180" y="60">Un texte</text>
-		//skipped...
+		//skipped... On ne traite pas les textes.
 	}
 	
 }
