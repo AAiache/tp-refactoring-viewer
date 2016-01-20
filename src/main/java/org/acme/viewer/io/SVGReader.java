@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.acme.viewer.io.svg.SVGElementReader;
+import org.acme.viewer.io.svg.SVGElementReaderRegistry;
 import org.acme.viewer.shape.Circle;
 import org.acme.viewer.shape.Rectangle;
 import org.acme.viewer.shape.Shape;
@@ -24,6 +26,12 @@ import org.jdom2.input.SAXBuilder;
  */
 public class SVGReader {
 	private static Logger logger = LogManager.getLogger(SVGReader.class);
+	
+	private SVGElementReaderRegistry registry ;
+	
+	public SVGReader(){
+		this.registry = new SVGElementReaderRegistry();
+	}
 	
 	/**
 	 * Chargement du fichier
@@ -78,50 +86,12 @@ public class SVGReader {
 	 */
 	private Shape parseShapeElement(Element shapeElement) {
 		String shapeType = shapeElement.getName();
-		if ( shapeType.equals("circle") ){
-			return parseCircleElement(shapeElement);
-		}else if ( shapeType.equals("rect") ){
-			return parseRectElement(shapeElement);
-		}else{
+		SVGElementReader reader = registry.getReader(shapeType);
+		if ( null == reader ){
 			logger.info("Unsupported type : {} (skipping)",shapeType);
 			return null ;
 		}
-	}
-
-	/**
-	 * Lecture de la balise circle
-	 * @param shapeElement
-	 * @return
-	 */
-	private Shape parseCircleElement(Element shapeElement) {
-		double centerX = Double.parseDouble(shapeElement.getAttributeValue("cx"));
-		double centerY = Double.parseDouble(shapeElement.getAttributeValue("cy"));
-		double radius = Double.parseDouble(shapeElement.getAttributeValue("r"));
-		
-		Circle circle = new Circle();
-		circle.setCenterX(centerX);
-		circle.setCenterY(centerY);	
-		circle.setRadius(radius);		
-		return circle ;
-	}
-	
-	/**
-	 * Lecture de la balise rect
-	 * @param shapeElement
-	 * @return
-	 */
-	private Shape parseRectElement(Element shapeElement) {
-		double x = Double.parseDouble(shapeElement.getAttributeValue("x"));
-		double y = Double.parseDouble(shapeElement.getAttributeValue("y"));
-		double width  = Double.parseDouble(shapeElement.getAttributeValue("width"));
-		double height = Double.parseDouble(shapeElement.getAttributeValue("height"));
-		
-		Rectangle rectangle = new Rectangle();
-		rectangle.setX(x);
-		rectangle.setY(y);
-		rectangle.setWidth(width);
-		rectangle.setHeight(height);
-		return rectangle ;
+		return reader.read(shapeElement);
 	}
 
 	
